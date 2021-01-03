@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "bootcamp-fb-project": {
+      "hosting": {
+        "bootcamp-fb-project": [
+          "bootcamp-fb-project"
+        ]
+      }
+    }
+  }
+}

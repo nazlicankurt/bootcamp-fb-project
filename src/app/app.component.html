@@ -2,14 +2,14 @@
   <mat-drawer #drawer mode="over">
     <mat-nav-list class="nav-list">
       <ng-container *ngFor="let nav of navItems">
-        <a class="nav-list-item" (click)="drawer.close()" mat-list-item routerLink="nav.routerLink">{{nav.name}}</a>
+        <a class="nav-list-item" (click)="drawer.close()" mat-list-item [routerLink]="nav.routerLink">{{nav.name}}</a>
+        <a class="nav-list-item" *ngIf="auth.user | async" (click)="logout(); drawer.close();" mat-list-item>Logout</a>
       </ng-container>
     </mat-nav-list>
   </mat-drawer>
   <mat-drawer-content>
     <mat-toolbar color="primary">
-      <button (click)="drawer.toggle()" mat-icon-button class="example-icon"
-        aria-label="Example icon-button with menu icon">
+      <button (click)="drawer.toggle()" mat-icon-button aria-label="Menu button">
         <mat-icon>menu</mat-icon>
       </button>
       <span>Bootcamp Firebase Project</span>

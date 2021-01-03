@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -14,4 +17,12 @@ export class AppComponent {
     }
   ]
 
+  constructor(public auth: AngularFireAuth, private router: Router) {
+  }
+
+  logout() {
+    this.auth.signOut().then(() => {
+      this.router.navigate(["login"]);
+    });
+  }
 }

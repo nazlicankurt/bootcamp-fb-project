@@ -11,10 +11,18 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input'
+import {MatFormFieldModule} from '@angular/material/form-field' 
+
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoginContainerComponent } from './login-container/login-container.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +33,12 @@ import { MatListModule } from '@angular/material/list';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
