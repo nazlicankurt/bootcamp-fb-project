@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'bootcamp-fb-project';
+
+  navItems = [
+    {
+      name: "Profile",
+      routerLink: "profile"
+    }
+  ]
+
 }
