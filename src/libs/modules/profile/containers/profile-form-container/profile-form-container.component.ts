@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { debounceTime, map } from 'rxjs/operators';
 import { ProfileDbService } from '../../services/profile-db.service';
 
 @Component({

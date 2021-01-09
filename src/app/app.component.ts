@@ -14,6 +14,10 @@ export class AppComponent {
     {
       name: "Profile",
       routerLink: "profile"
+    },
+    {
+      name: "Users",
+      routerLink: "users"
     }
   ]
 

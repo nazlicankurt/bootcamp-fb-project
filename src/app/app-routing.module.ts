@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AngularFireAuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { canActivate } from '@angular/fire/auth-guard';
 import { LoginContainerComponent } from './login-container/login-container.component';
 
@@ -22,6 +22,11 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('../libs/modules/profile/profile.module').then(m => m.ProfileModule),
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
+  {
+    path: 'users',
+    loadChildren: () => import('../libs/modules/users/users.module').then(m => m.UsersModule),
     ...canActivate(redirectUnauthorizedToLogin)
   }
 ];
