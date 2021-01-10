@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ProfileDbService } from './services/profile-db.service';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 const routes: Route[] = [
   {
@@ -31,8 +32,9 @@ const routes: Route[] = [
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatSnackBarModule,
     AngularFirestoreModule,
-    MatSnackBarModule
+    AngularFireAuthModule,
   ],
   providers: [
     ProfileDbService

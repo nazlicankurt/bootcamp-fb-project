@@ -16,8 +16,8 @@ export class AppComponent {
       routerLink: "profile"
     },
     {
-      name: "Users",
-      routerLink: "users"
+      name: "Posts",
+      routerLink: "posts"
     }
   ]
 

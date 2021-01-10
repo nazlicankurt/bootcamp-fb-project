@@ -7,5 +7,6 @@ export const environment = {
     storageBucket: "bootcamp-fb-project.appspot.com",
     messagingSenderId: "74754069138",
     appId: "1:74754069138:web:e0e734a372695301d80c4b"
-  }
+  },
+  functions_root: "https://us-central1-bootcamp-fb-project.cloudfunctions.net/"
 };

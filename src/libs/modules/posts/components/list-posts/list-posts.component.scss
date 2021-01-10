@@ -1,0 +1,20 @@
+.post-list-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+
+  mat-card {
+    margin: 1em;
+  }
+
+  mat-card-actions {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+
+    button {
+      margin: 0.4em;
+    }
+  }
+}

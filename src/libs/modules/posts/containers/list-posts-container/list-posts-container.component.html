@@ -1,0 +1,22 @@
+<div class="add-button-container">
+  <button (click)="handleAddButtonClicked()" mat-fab color="primary">
+    <mat-icon>
+      add
+    </mat-icon>
+  </button>
+</div>
+
+<div class="search-posts-form-container">
+  <mat-form-field appearance="outline">
+    <mat-label>Search By Name</mat-label>
+    <input [formControl]="nameFormControl" type="text" matInput placeholder="" [matAutocomplete]="auto">
+    <mat-autocomplete [displayWith]="displayFn" (optionSelected)='getPosts($event.option.value)' #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredProfiles | async" [value]="option">
+        {{option.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>
+
+<app-list-posts [posts]="posts">
+</app-list-posts>

@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { from } from 'rxjs';
-import { catchError, switchMap, take } from 'rxjs/operators';
+import { catchError, filter, switchMap, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,14 +16,18 @@ export class ProfileDbService {
     this.auth.user.pipe(
       take(1),
       switchMap((user) => {
-        return from(this.firestore.doc(`profiles/${user.uid}`).set({...data, userId: user.uid}));
+        return from(this.firestore.doc(`profiles/${user.uid}`).set({ ...data, userId: user.uid }));
       }),
       catchError((error) => {
-        this.snackBar.open('Error');
+        this.snackBar.open('Error', null, {
+          duration: 2000,
+        });
         return error;
       })
     ).subscribe(() => {
-      this.snackBar.open('Saved Profile')
+      this.snackBar.open('Saved Profile', null, {
+        duration: 2000,
+      })
     });
   }
 
@@ -31,7 +35,9 @@ export class ProfileDbService {
     return this.auth.user.pipe(
       take(1),
       switchMap((user) => {
-        return this.firestore.doc(`profiles/${user.uid}`).valueChanges()
+        return this.firestore.doc(`profiles/${user.uid}`).valueChanges().pipe(
+          filter(value => !!value)
+        )
       })
     )
   }

@@ -25,10 +25,10 @@ const routes: Routes = [
     ...canActivate(redirectUnauthorizedToLogin)
   },
   {
-    path: 'users',
-    loadChildren: () => import('../libs/modules/users/users.module').then(m => m.UsersModule),
+    path: 'posts',
+    loadChildren: () => import('../libs/modules/posts/posts.module').then(m => m.PostsModule),
     ...canActivate(redirectUnauthorizedToLogin)
-  }
+  },
 ];
 
 @NgModule({

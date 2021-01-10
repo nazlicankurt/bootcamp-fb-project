@@ -1,0 +1,23 @@
+<div class="add-new-post-container">
+  <form [formGroup]="postForm" autocomplete="off">
+    <mat-card>
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input formControlName="title" type="text" matInput placeholder="">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Post</mat-label>
+        <textarea formControlName="body" matInput placeholder=""></textarea>
+      </mat-form-field>
+      <mat-card-actions>
+        <button [disabled]="!postForm.valid" mat-fab color="primary" (click)="handleAddClicked()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>
+
+
+<app-list-posts [posts]="myPosts">
+</app-list-posts>
