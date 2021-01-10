@@ -23,11 +23,6 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () => import('../libs/modules/profile/profile.module').then(m => m.ProfileModule),
     ...canActivate(redirectUnauthorizedToLogin)
-  },
-  {
-    path: 'users',
-    loadChildren: () => import('../libs/modules/users/users.module').then(m => m.UsersModule),
-    ...canActivate(redirectUnauthorizedToLogin)
   }
 ];
 
