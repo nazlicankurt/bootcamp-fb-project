@@ -17,6 +17,9 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginContainerComponent } from './login-container/login-container.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -36,8 +39,10 @@ import { LoginContainerComponent } from './login-container/login-container.compo
     MatFormFieldModule,
     MatInputModule,
     AngularFireModule.initializeApp(environment.firebase),
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [],
   bootstrap: [AppComponent]

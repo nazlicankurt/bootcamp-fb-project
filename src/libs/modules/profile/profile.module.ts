@@ -10,6 +10,10 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ProfileDbService } from './services/profile-db.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { StoreModule } from '@ngrx/store';
+import * as fromProfile from './+state/profile.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { ProfileEffects } from './+state/profile.effects';
 
 const routes: Route[] = [
   {
@@ -35,6 +39,8 @@ const routes: Route[] = [
     MatSnackBarModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
+    StoreModule.forFeature(fromProfile.profileFeatureKey, fromProfile.reducer),
+    EffectsModule.forFeature([ProfileEffects]),
   ],
   providers: [
     ProfileDbService

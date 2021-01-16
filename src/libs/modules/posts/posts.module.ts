@@ -16,6 +16,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { StoreModule } from '@ngrx/store';
+import * as fromPosts from './+state/posts.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { PostsEffects } from './+state/posts.effects';
 
 const routes: Route[] = [
   {
@@ -46,7 +50,9 @@ const routes: Route[] = [
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    StoreModule.forFeature(fromPosts.postsFeatureKey, fromPosts.reducer),
+    EffectsModule.forFeature([PostsEffects])
   ],
   providers: [
     PostsDbService

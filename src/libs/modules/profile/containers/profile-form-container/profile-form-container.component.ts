@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
 import { ProfileDbService } from '../../services/profile-db.service';
+import { Store, select } from '@ngrx/store';
+import { State } from '../../+state/profile.reducer';
+import { getProfileFromDB } from '../../+state/profile.actions';
+import { selectProfileInfo } from '../../+state/profile.selectors';
+import { delay, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile-form-container',
@@ -18,15 +22,25 @@ export class ProfileFormContainerComponent implements OnInit {
 
   subscriptions: Subscription = new Subscription();
 
-  constructor(private formBuilder: FormBuilder, public profileDB: ProfileDbService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    public profileDB: ProfileDbService,
+    private store: Store<State>
+  ) { }
 
   ngOnInit(): void {
   }
 
   ngAfterViewInit() {
+    this.store.dispatch(getProfileFromDB());
+
     this.subscriptions.add(
-      this.profileDB.getProfile().subscribe((profileDocValue) => {
-        this.myForm.patchValue(profileDocValue, { emitEvent: false });
+      this.store.pipe(
+        select(selectProfileInfo),
+        filter(profileInfo => !!profileInfo)
+      ).subscribe((profileInfo) => {
+        console.log(profileInfo);
+        this.myForm.patchValue(profileInfo, { emitEvent: false });
       })
     )
   }
