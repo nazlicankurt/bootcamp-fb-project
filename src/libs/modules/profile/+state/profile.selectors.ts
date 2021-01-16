@@ -8,7 +8,6 @@ export const selectProfileState = createFeatureSelector<fromProfile.State>(
 export const selectProfileInfo = createSelector(
   selectProfileState,
   (profileState) => {
-    console.log(profileState);
     return profileState.profileInfo;
   }
 );

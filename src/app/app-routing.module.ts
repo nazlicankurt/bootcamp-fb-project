@@ -29,6 +29,11 @@ const routes: Routes = [
     loadChildren: () => import('../libs/modules/posts/posts.module').then(m => m.PostsModule),
     ...canActivate(redirectUnauthorizedToLogin)
   },
+  {
+    path: 'css',
+    loadChildren: () => import('../libs/modules/css-example/css-example.module').then(m => m.CssExampleModule),
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
 ];
 
 @NgModule({

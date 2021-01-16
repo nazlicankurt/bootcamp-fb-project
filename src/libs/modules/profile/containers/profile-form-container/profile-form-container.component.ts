@@ -39,7 +39,6 @@ export class ProfileFormContainerComponent implements OnInit {
         select(selectProfileInfo),
         filter(profileInfo => !!profileInfo)
       ).subscribe((profileInfo) => {
-        console.log(profileInfo);
         this.myForm.patchValue(profileInfo, { emitEvent: false });
       })
     )

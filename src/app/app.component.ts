@@ -18,6 +18,10 @@ export class AppComponent {
     {
       name: "Posts",
       routerLink: "posts"
+    },
+    {
+      name: "CSS",
+      routerLink: "css"
     }
   ]
 
